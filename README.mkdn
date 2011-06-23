@@ -3,7 +3,7 @@ Fetches CPAN::Recent::Upload and growls as new activies are coming in.
 
 ## INSTALL
 
-There's a binary build for Mac OS X available at [Downloads](http://github.com/maluco/cpan-recent-growler/downloads).
+There's a binary build for Mac OS X available at [Downloads](http://github.com/maluco/cpan-recent-growler.pl/downloads).
 
 ## Configurations
 
