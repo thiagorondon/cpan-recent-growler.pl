@@ -1,0 +1,15 @@
+
+Fetches CPAN::Recent::Upload and growls as new activies are coming in.
+
+## INSTALL
+
+There's a binary build for Mac OS X available at [Downloads](http://github.com/maluco/cpan-recent-growler/downloads).
+
+## Configurations
+
+By default this scripts fetches the CPAN updates every 300 seconds and displays at most 10 Growl notification per fetch and you can change the both settings with Mac OS X preferences:
+
+defaults write net.bulknews.CPANRecentGrowler initial_interval 21600
+defaults write net.bulknews.CPANRecentGrowler interval 180
+defaults write net.bulknews.CPANRecentGrowler maxGrowls 5
+
