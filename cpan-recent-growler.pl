@@ -13,14 +13,16 @@ use FindBin;
 use Digest::MD5 qw(md5_hex);
 use LWP::Simple;
 
+use version; our $VERSION = qv("v0.1");
+
 my $AppDomain = 'net.bulknews.CpanRecentGrowler';
 my $AppName   = 'cpan-recent Growler';
 
 my $TempDir = "$ENV{HOME}/Library/Caches/$AppDomain";
 mkdir $TempDir, 0777 unless -e $TempDir;
 
-my $AppIcon = "$TempDir/cpan.jpg";
-copy "$FindBin::Bin/data/cpan.jpg", $AppIcon;
+my $AppIcon = "$TempDir/cpan.png";
+copy "$FindBin::Bin/data/cpan.png", $AppIcon;
 
 my @events = ('New release');
 
@@ -31,7 +33,7 @@ Cocoa::Growl::growl_register(
     defaults => [ @events, 'Fatal Error' ],
 );
 
-my %options = ( interval => 10000, maxGrowls => 10 );
+my %options = ( interval => 100000, maxGrowls => 10 );
 
 my $t = AE::timer 0, $options{interval}, sub {
     growl_feed( \%options );
@@ -63,7 +65,7 @@ sub growl_feed {
         warn $cpan_email;
         my $cpan_md5 =  md5_hex($cpan_email);
         my $gravatar_url = 'http://gravatar.com/avatar/' . $cpan_md5;
-        my $gravatar_file = join('/', $TempDir, $cpan_md5);
+        my $gravatar_file = join('/', $TempDir, "$cpan_md5.jpg" );
         getstore( $gravatar_url, $gravatar_file ) if ( ! -r $gravatar_file );
 
         Cocoa::Growl::growl_notify(
