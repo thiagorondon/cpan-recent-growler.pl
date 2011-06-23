@@ -13,7 +13,7 @@ use FindBin;
 use Digest::MD5 qw(md5_hex);
 use LWP::Simple;
 
-my $AppDomain = 'net.bulknews.GitHubGrowler';
+my $AppDomain = 'net.bulknews.CpanRecentGrowler';
 my $AppName   = 'cpan-recent Growler';
 
 my $TempDir = "$ENV{HOME}/Library/Caches/$AppDomain";
